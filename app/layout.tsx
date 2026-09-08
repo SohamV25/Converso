@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "@/app/globals.css"
 import Navbar from "@/components/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -23,10 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={`${bricolage.variable} antialiased`}>
-        <Navbar/>
-        {children}
-        </body>
+      <ClerkProvider appearance={{variables : {colorPrimary : '#fe5933'}}}>
+        <body className={`${bricolage.variable} antialiased`}>
+          <Navbar/>
+          {children}
+          </body>
+        </ClerkProvider>
     </html>
   );
 }
