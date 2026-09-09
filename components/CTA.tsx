@@ -11,13 +11,16 @@ const CTA = () => {
       <p>Pick a name, subject, voice, & personality - and start learning through voice conversations that feel natural and fun</p>
 
       <Image src={"images/cta.svg"} alt='cta' width={362} height={232}/>
+
+      <div className='flex justify-center gap-2 w-full bg-white text-black p-2 rounded-2xl'>
       <button className='btn-primary'>
         <Image src={"/icons/plus.svg"} alt='plus' width={12} height={12}/>
       </button>
 
-      <Link href="/companions/new">
+      <Link href="/companions/new" >
         <p>Build a New Companion</p>
       </Link>
+      </div>
 
     </section>
   )
