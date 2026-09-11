@@ -44,7 +44,7 @@ const NavItems = () => {
 
         {/* Mobile */}
         <button
-            className='flex size-10 items-center justify-center rounded-full border border-border bg-surface md:hidden'
+            className='flex size-11 items-center justify-center rounded-full border border-border bg-surface md:hidden'
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls='mobile-nav'

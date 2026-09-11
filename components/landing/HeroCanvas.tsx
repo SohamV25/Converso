@@ -37,7 +37,7 @@ const HeroCanvas = () => {
             ref={ref}
             role='img'
             aria-label='A glowing voice orb sending out sound ripples, circled by six subject badges on orbit lines. Move your pointer to tilt the scene, click the orb to make it pulse, or click a badge to browse that subject.'
-            className='relative aspect-square w-full'
+            className='relative aspect-square w-full min-w-0 [&_canvas]:max-w-full'
         >
             {/* Accent glow behind the scene */}
             <div className='absolute inset-[12%] rounded-full bg-mint/25 blur-[90px]' aria-hidden />

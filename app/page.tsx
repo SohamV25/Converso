@@ -30,8 +30,8 @@ const Page = async () => {
         <section className="relative overflow-hidden">
             <div aria-hidden className="graph-paper absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_60%_40%,black,transparent)]" />
 
-            <div className="relative mx-auto grid max-w-[1320px] items-center gap-4 px-6 pt-12 pb-16 md:px-10 lg:grid-cols-[1.05fr_1fr] lg:pt-20">
-                <div className="flex flex-col items-start gap-7">
+            <div className="relative mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-4 px-5 pt-10 pb-12 sm:px-6 md:px-10 lg:grid-cols-[1.05fr_1fr] lg:pt-20 lg:pb-16">
+                <div className="flex min-w-0 flex-col items-start gap-6 sm:gap-7">
                     <p className="eyebrow flex animate-rise items-center gap-3">
                         <span className="size-1.5 animate-pulse rounded-full bg-primary" />
                         Real-time AI voice tutors
@@ -42,33 +42,33 @@ const Page = async () => {
                         <span className="display-italic text-primary">out loud.</span>
                     </h1>
 
-                    <p className="max-w-lg animate-rise text-lg leading-relaxed text-muted-foreground [animation-delay:160ms]">
+                    <p className="max-w-lg animate-rise text-base leading-relaxed sm:text-lg text-muted-foreground [animation-delay:160ms]">
                         Build a tutor for any topic — choose the subject, the voice and the vibe — then just talk.
                         It explains, asks you questions back, and keeps a transcript of every session.
                     </p>
 
-                    <div className="flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
-                        <Link href="/companions/new" className="btn-primary group px-6 py-3 text-base">
+                    <div className="flex w-full animate-rise flex-col gap-3 [animation-delay:240ms] sm:w-auto sm:flex-row sm:flex-wrap">
+                        <Link href="/companions/new" className="btn-primary group justify-center px-6 py-3 text-base">
                             Build your companion
                             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
                         </Link>
-                        <Link href="/companions" className="btn-ghost px-6 py-3 text-base">
+                        <Link href="/companions" className="btn-ghost justify-center px-6 py-3 text-base">
                             Browse the library
                         </Link>
                     </div>
 
-                    <dl className="mt-2 grid w-full max-w-md animate-rise grid-cols-3 gap-6 border-t border-border pt-6 [animation-delay:320ms]">
+                    <dl className="mt-2 grid w-full max-w-md animate-rise grid-cols-3 gap-3 border-t border-border pt-6 [animation-delay:320ms] sm:gap-6">
                         {stats.map(({ value, label }) => (
                             <div key={label} className="flex flex-col gap-1">
                                 <dt className="sr-only">{label}</dt>
-                                <dd className="font-display text-3xl font-semibold">{value}</dd>
-                                <dd className="eyebrow" aria-hidden>{label}</dd>
+                                <dd className="font-display text-2xl font-semibold sm:text-3xl">{value}</dd>
+                                <dd className="eyebrow tracking-[0.1em] sm:tracking-[0.2em]" aria-hidden>{label}</dd>
                             </div>
                         ))}
                     </dl>
                 </div>
 
-                <div className="relative mx-auto w-full max-w-[640px] animate-rise [animation-delay:200ms]">
+                <div className="relative mx-auto w-full min-w-0 max-w-[640px] animate-rise [animation-delay:200ms]">
                     <HeroCanvas />
 
                     <SpinBadge className="absolute top-[4%] left-[-2%] hidden lg:block" />
@@ -92,7 +92,7 @@ const Page = async () => {
 
         <SubjectMarquee />
 
-        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-28 px-6 py-24 md:px-10">
+        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-20 px-5 py-16 sm:gap-28 sm:px-6 sm:py-24 md:px-10">
             {/* ---------------- Popular companions ---------------- */}
             <section aria-labelledby="popular-heading" className="flex flex-col gap-10">
                 <Reveal className="flex flex-wrap items-end justify-between gap-6">

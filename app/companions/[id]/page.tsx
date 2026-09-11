@@ -28,8 +28,8 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
         <ArrowLeft className="size-4" aria-hidden /> Back to library
       </Link>
 
-      <article className="flex items-center justify-between gap-6 rounded-[28px] border border-border bg-surface p-5 md:p-6 max-md:flex-col max-md:items-start">
-        <div className="flex items-center gap-4">
+      <article className="flex items-center justify-between gap-4 rounded-[24px] border border-border bg-surface p-4 sm:rounded-[28px] sm:p-5 md:gap-6 md:p-6 max-md:flex-col max-md:items-start">
+        <div className="flex min-w-0 items-center gap-4">
           <div
             className="flex size-16 shrink-0 items-center justify-center rounded-2xl max-md:hidden"
             style={{ backgroundColor: getSubjectColor(subject) }}
@@ -42,7 +42,7 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
             />
           </div>
 
-          <div className="flex flex-col gap-1.5">
+          <div className="flex min-w-0 flex-col gap-1.5">
             <div className="flex flex-wrap items-center gap-3">
               <h1 className="text-2xl md:text-3xl">{name}</h1>
               <span

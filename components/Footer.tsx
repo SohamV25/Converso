@@ -25,8 +25,8 @@ const columns = [
 const Footer = () => {
   return (
     <footer className="relative mt-10 overflow-hidden border-t border-border bg-surface/40">
-      <div className="mx-auto grid max-w-[1320px] gap-12 px-6 pt-16 pb-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr] md:px-10">
-        <div className="flex flex-col gap-4">
+      <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-x-6 gap-y-10 px-5 pt-14 pb-10 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1.2fr] md:gap-12 md:px-10 md:pt-16">
+        <div className="col-span-2 flex flex-col gap-4 md:col-span-1">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Converso home">
             <Logo />
             <span className="font-display text-2xl font-semibold tracking-tight">Converso</span>
@@ -54,7 +54,7 @@ const Footer = () => {
           </nav>
         ))}
 
-        <div className="flex flex-col gap-3">
+        <div className="col-span-2 flex flex-col gap-3 md:col-span-1">
           <p className="eyebrow">Subjects</p>
           <ul className="flex flex-wrap gap-2">
             {subjects.map((subject) => (
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[1320px] flex-col items-start justify-between gap-2 border-t border-border px-6 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:px-10">
+      <div className="mx-auto flex max-w-[1320px] flex-col items-start justify-between gap-2 border-t border-border px-5 py-6 sm:px-6 text-xs text-muted-foreground md:flex-row md:items-center md:px-10">
         <p>© {new Date().getFullYear()} Converso. Made for curious minds.</p>
         <p className="tracking-widest uppercase">Learn out loud</p>
       </div>

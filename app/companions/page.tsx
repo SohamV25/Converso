@@ -17,7 +17,7 @@ const CompanionsLibrary = async({searchParams} : SearchParams) => {
 
   return (
     <main>
-      <section className="relative flex flex-col gap-8 overflow-hidden rounded-[32px] border border-border bg-surface px-6 py-10 md:px-10 md:py-14">
+      <section className="relative flex flex-col gap-6 overflow-hidden rounded-[28px] border border-border bg-surface px-5 py-8 sm:gap-8 sm:rounded-[32px] sm:px-6 sm:py-10 md:px-10 md:py-14">
         <div aria-hidden className="graph-paper absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div aria-hidden className="absolute -top-32 right-0 size-80 rounded-full bg-mint/20 blur-3xl" />
 
@@ -28,7 +28,7 @@ const CompanionsLibrary = async({searchParams} : SearchParams) => {
               Every companion, <span className="display-italic text-primary">one conversation away.</span>
             </h1>
           </div>
-          <Link href="/companions/new" className="btn-primary">
+          <Link href="/companions/new" className="btn-primary w-full justify-center sm:w-auto">
             <Plus className="size-4" aria-hidden /> New companion
           </Link>
         </div>

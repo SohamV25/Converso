@@ -25,7 +25,7 @@ const NewCompanion = async() => {
   return (
     <main>
       { canCreateCompanion ? (
-        <div className='grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
           <section className='flex flex-col gap-8 lg:sticky lg:top-28 lg:self-start'>
             <div className='flex flex-col gap-4'>
               <p className='eyebrow'>Companion builder</p>
@@ -55,7 +55,7 @@ const NewCompanion = async() => {
             </div>
           </section>
 
-          <section className='panel p-6 md:p-10'>
+          <section className='panel p-5 sm:p-6 md:p-10'>
             <CompanionForm/>
           </section>
         </div>

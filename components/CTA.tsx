@@ -22,19 +22,19 @@ const CTA = () => {
       </p>
 
       {/* Stack of subject tiles standing in for the old illustration */}
-      <div className='relative flex w-full items-center justify-between gap-4 rounded-2xl bg-surface-2 p-4' aria-hidden>
+      <div className='relative flex w-full items-center justify-between gap-3 rounded-2xl bg-surface-2 p-3 sm:gap-4 sm:p-4' aria-hidden>
         <div className='flex -space-x-3'>
           {subjects.slice(0, 5).map((subject, i) => (
             <span
               key={subject}
-              className='flex size-11 items-center justify-center rounded-xl border-2 border-surface-2'
+              className='flex size-9 shrink-0 items-center justify-center rounded-xl border-2 border-surface-2 sm:size-11'
               style={{ backgroundColor: getSubjectColor(subject), transform: `rotate(${(i - 2) * 6}deg)` }}
             >
-              <Image src={`/icons/${subject}.svg`} alt='' width={20} height={20} />
+              <Image src={`/icons/${subject}.svg`} alt='' width={20} height={20} className='size-4 sm:size-5' />
             </span>
           ))}
         </div>
-        <Waveform count={10} className='h-8' barClassName='bg-mustard' />
+        <Waveform count={10} className='h-8 max-[379px]:hidden' barClassName='bg-mustard' />
       </div>
 
       <Link href="/companions/new" className='btn-primary relative mt-auto w-full justify-center py-3 text-base'>

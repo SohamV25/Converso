@@ -45,7 +45,7 @@ const Searchinput = () => {
         <input
             aria-label='Search companions by topic or name'
             placeholder='Search by topic or name…'
-            className='w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground'
+            className='w-full bg-transparent text-base outline-none placeholder:text-muted-foreground sm:text-sm'
             value={searchQuery}
             onChange={(e)=> setSearchQuery(e.target.value)}
          />
