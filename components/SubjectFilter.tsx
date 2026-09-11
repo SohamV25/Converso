@@ -44,7 +44,7 @@ const SubjectFilter = () => {
       value={subject || undefined}
     >
 
-      <SelectTrigger className="input capitalize">
+      <SelectTrigger aria-label="Filter by subject" className="w-full rounded-full border-border bg-surface-2 px-4 capitalize data-[size=default]:h-11 sm:w-48">
         <SelectValue placeholder="Subject"/>
       </SelectTrigger>
 

@@ -1,9 +1,8 @@
 'use client'
-import { setServers } from 'dns';
-import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { Search } from 'lucide-react';
 import {formUrlQuery, removeKeysFromUrlQuery} from '@jsmastery/utils'
 
 const Searchinput = () => {
@@ -13,11 +12,8 @@ const Searchinput = () => {
     const searchParams = useSearchParams()
     const query = searchParams.get('topic') || ''
 
-    // console.log("pathname: ",pathname)
-    // console.log("searchParams: ",searchParams)
-    // console.log("query: ",query)
-
-    const [searchQuery, setSearchQuery] = useState('')
+    // Start from whatever topic is already in the URL, so a refresh keeps the search
+    const [searchQuery, setSearchQuery] = useState(query)
 
     useEffect(()=>{
         const delyaDebounceFn = setTimeout(()=>{
@@ -44,19 +40,16 @@ const Searchinput = () => {
     }, [searchQuery, router, searchParams, pathname])
 
   return (
-    <div
-        className='relative border border-black rounded-lg items-center flex gap-2 px-2 py-1 h-fit'
-    >
-        
-        <Image src="/icons/search.svg" alt='search' width={15} height={15}/>
-        <input 
-            placeholder='Search companions...' 
-            className='outline-none' 
+    <label className='flex h-11 w-full items-center gap-2.5 rounded-full border border-border bg-surface-2 px-4 transition-colors focus-within:border-primary focus-within:shadow-[0_0_0_4px_rgb(63_224_176/0.18)] sm:w-80'>
+        <Search className='size-4 shrink-0 text-muted-foreground' aria-hidden />
+        <input
+            aria-label='Search companions by topic or name'
+            placeholder='Search by topic or name…'
+            className='w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground'
             value={searchQuery}
             onChange={(e)=> setSearchQuery(e.target.value)}
          />
-    
-    </div>
+    </label>
   )
 }
 

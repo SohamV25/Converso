@@ -61,12 +61,12 @@ const CompanionForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-6 sm:grid-cols-2">
                 <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="sm:col-span-2">
                             <FormLabel>Companion name</FormLabel>
                             <FormControl>
                                 <Input
@@ -83,7 +83,7 @@ const CompanionForm = () => {
                     control={form.control}
                     name="subject"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="sm:col-span-2">
                             <FormLabel>Subject</FormLabel>
                             <FormControl>
                                 <Select
@@ -115,7 +115,7 @@ const CompanionForm = () => {
                     control={form.control}
                     name="topic"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="sm:col-span-2">
                             <FormLabel>What should the companion help with?</FormLabel>
                             <FormControl>
                                 <Textarea
@@ -196,7 +196,7 @@ const CompanionForm = () => {
                     control={form.control}
                     name="duration"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="sm:col-span-2">
                             <FormLabel>Estimated session duration in minutes</FormLabel>
                             <FormControl>
                                 <Input
@@ -210,7 +210,13 @@ const CompanionForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="w-full cursor-pointer">Build Your Companion</Button>
+                <Button
+                    type="submit"
+                    disabled={form.formState.isSubmitting}
+                    className="h-12 w-full rounded-full text-base font-semibold sm:col-span-2"
+                >
+                    {form.formState.isSubmitting ? "Building your companion…" : "Build your companion"}
+                </Button>
             </form>
         </Form>
     )

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useAuth } from '@clerk/nextjs'
+import { ArrowRight, Bookmark, Clock } from 'lucide-react'
 import { addBookmark, removeBookmark } from '@/lib/actions/companion.actions'
 
 interface companionCardProps {
@@ -56,13 +57,44 @@ const CompanionCard = ({id, name, topic, subject, duration, color, bookmarked = 
     }
   }
 
+  // Feed the pointer position to CSS for the moving highlight
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`)
+    e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`)
+  }
+
   return (
     <article
-    className='companion-card' style={{backgroundColor : color}}
+      className='companion-card group min-h-[300px]'
+      style={{backgroundColor : color}}
+      onPointerMove={handlePointerMove}
     >
-      <div className='flex justify-between items-center'>
-        <div className='subject-badge'>
-        {subject}
+      {/* Halftone print texture */}
+      <div
+        aria-hidden
+        className='pointer-events-none absolute inset-0 opacity-[0.13] [background-image:radial-gradient(rgb(27_24_19)_1px,transparent_1.2px)] [background-size:9px_9px] [mask-image:linear-gradient(135deg,transparent_35%,black)]'
+      />
+      {/* Pointer-following highlight */}
+      <div
+        aria-hidden
+        className='pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 [background:radial-gradient(260px_circle_at_var(--x,50%)_var(--y,50%),rgb(255_255_255/0.32),transparent_65%)]'
+      />
+      {/* Oversized subject mark as cover art */}
+      <Image
+        src={`/icons/${subject}.svg`}
+        alt=''
+        width={150}
+        height={150}
+        className='pointer-events-none absolute -right-6 -bottom-8 rotate-[-14deg] opacity-[0.12] transition-transform duration-500 group-hover:rotate-[-4deg]'
+      />
+
+      <div className='relative flex items-center justify-between'>
+        <div className='flex items-center gap-2'>
+          <span className='flex size-10 items-center justify-center rounded-full bg-ink/10'>
+            <Image src={`/icons/${subject}.svg`} alt='' width={20} height={20} />
+          </span>
+          <span className='subject-badge'>{subject}</span>
         </div>
 
         <button
@@ -72,31 +104,26 @@ const CompanionCard = ({id, name, topic, subject, duration, color, bookmarked = 
           aria-label={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
           aria-pressed={isBookmarked}
         >
-        <Image
-          src={isBookmarked ? '/icons/bookmark-filled.svg' : '/icons/bookmark.svg'}
-          alt=""
-          width={12.5}
-          height={15}
-        />
+          <Bookmark className='size-4 text-cream' fill={isBookmarked ? 'currentColor' : 'none'} />
         </button>
       </div>
 
-      <h2 className='text-2xl font-bold'>{name}</h2>
-
-      <p className='text-sm'>{topic}</p>
-
-      <div className='flex items-center gap-2'>
-        <Image src="/icons/clock.svg" alt='duration' width={13.5} height={13.5}/>
+      <div className='relative flex flex-col gap-2'>
+        <h2 className='text-[1.75rem] leading-[1.05] font-semibold'>{name}</h2>
+        <p className='line-clamp-2 text-sm text-ink/75'>{topic}</p>
       </div>
 
-      <p className='text-sm'>{duration} minutes</p>
-
-      <Link href={`/companions/${id}`} className='w-full'>
-        <button className='btn-primary w-full justify-center'>
-          Launch Lesson
-        </button>
-      </Link>
-
+      <div className='relative flex items-center justify-between gap-3'>
+        <span className='flex items-center gap-1.5 text-xs tracking-widest text-ink/70 uppercase'>
+          <Clock className='size-3.5' aria-hidden /> {duration} min
+        </span>
+        <Link
+          href={`/companions/${id}`}
+          className='inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-cream transition-all duration-200 hover:gap-3'
+        >
+          Launch lesson <ArrowRight className='size-4' aria-hidden />
+        </Link>
+      </div>
     </article>
   )
 }

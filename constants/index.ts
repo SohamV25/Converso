@@ -7,13 +7,15 @@ export const subjects = [
   "economics",
 ];
 
+// Vintage textbook-cover tones: muted enough to sit on the dark UI,
+// light enough that the black subject icons and dark ink text stay readable
 export const subjectsColors = {
-  science: "#E5D0FF",
-  maths: "#FFDA6E",
-  language: "#BDE7FF",
-  coding: "#FFC8E4",
-  history: "#FFECC8",
-  economics: "#C8FFDF",
+  science: "#97AE7E",   // sage
+  maths: "#E9B949",     // mustard
+  language: "#7FA9BF",  // dusty blue
+  coding: "#E0876A",    // terracotta
+  history: "#CFA57F",   // sepia
+  economics: "#B99BC0", // mauve
 };
 
 export const voices = {

@@ -1,36 +1,32 @@
-
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import NavItems from "@/components/NavItems";
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
-            <Link href="/">
-                <div className="flex items-center gap-2.5 cursor-pointer">
-                    <Image
-                        src="/images/logo.svg"
-                        alt="logo"
-                        width={46}
-                        height={44}
-                    />
+        <header className="sticky top-0 z-50 border-b border-border/70 bg-ink/75 backdrop-blur-xl">
+            <nav className="relative mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-4 px-6 md:px-10">
+                <Link href="/" className="flex items-center gap-2.5" aria-label="Converso home">
+                    <Logo />
+                    <span className="font-display text-xl font-semibold tracking-tight">Converso</span>
+                </Link>
+
+                <div className="flex items-center gap-3">
+                    <NavItems />
+                    {/* Signed out: show a sign in button */}
+                    <SignedOut>
+                        <SignInButton>
+                            <button className="btn-signin">Sign in</button>
+                        </SignInButton>
+                    </SignedOut>
+                    {/* Signed in: show the account menu (includes sign out) */}
+                    <SignedIn>
+                        <UserButton appearance={{ elements: { avatarBox: "size-9 ring-2 ring-border" } }} />
+                    </SignedIn>
                 </div>
-            </Link>
-            <div className="flex items-center gap-8">
-                <NavItems />
-              {/*this is for when the user is signed out give him sign in button*/}
-                <SignedOut> 
-                    <SignInButton>
-                        <button className="btn-signin">Sign In</button>
-                    </SignInButton>
-                </SignedOut>
-                {/* this is for when the user is signed in give him sign out button */}
-                <SignedIn>
-                    <UserButton afterSignOutUrl=""/>
-                </SignedIn>
-            </div>
-        </nav>
+            </nav>
+        </header>
     )
 }
 
