@@ -38,7 +38,9 @@ const Searchinput = () => {
                 }
             }
         }, 1000)
-        
+
+        // Cancel the pending search if the input changes again or the page is left
+        return () => clearTimeout(delyaDebounceFn)
     }, [searchQuery, router, searchParams, pathname])
 
   return (
